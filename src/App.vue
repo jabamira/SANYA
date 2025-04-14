@@ -8,9 +8,9 @@
 
   <h1>Заработок за клик {{ earn }}</h1>
   <button @click="click_button">AAAAAAAAAAA</button>
-  <button @click="click_buttonId">Id book</button>
+  <button @click="get_book">Id book</button>
   <input type="password" v-model="password" >
-  <input type="password" v-model="idBook" >
+  <input type="" v-model="idBook" >
 </template>
 <script>
 import axios from 'axios'
@@ -45,7 +45,9 @@ import axios from 'axios'
 
       get_data()
       {
-        axios.get("https://stephen-king-api.onrender.com/api/books").then(res =>
+        
+        axios.get("https://stephen-king-api.onrender.com/api/books")
+        .then(res =>
         {
          console.log(res)
          this.info = res.data.data
@@ -56,13 +58,13 @@ import axios from 'axios'
           }
         )
       },
-      get_book(id)
+      get_book()
       {
-        console.log(id)
-        axios.get(`https://stephen-king-api.onrender.com/api/book/${id}`)
+        console.log(this.idBook)
+        axios.get(`https://stephen-king-api.onrender.com/api/book/${this.idBook}`)
         .then(res =>
         {
-         return res
+          console.log(res)
        
         })
         .catch (err =>
